@@ -1,0 +1,82 @@
+﻿<Window x:Class="StateMachineSample.WPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:StateMachineSample.WPF.Views"
+        xmlns:vm="clr-namespace:StateMachineSample.WPF.ViewModels"
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Command Buttons -->
+            <RowDefinition Height="Auto"/> <!-- Target Temp Slider -->
+            <RowDefinition Height="Auto"/> <!-- Latest Message -->
+            <RowDefinition Height="*"/> <!-- Message Logs -->
+            <RowDefinition Height="Auto"/> <!-- Status -->
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Stop" Command="{Binding StopCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+            <Button Grid.Column="1" Content="Start" Command="{Binding StartCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+            <Button Grid.Column="2" Content="Cool" Command="{Binding CoolCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+            <Button Grid.Column="3" Content="Heat" Command="{Binding HeatCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+            <Button Grid.Column="4" Content="Dry" Command="{Binding DryCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+            <Button Grid.Column="5" Content="Clean" Command="{Binding CleanCommand}" FontSize="20" FontFamily="メイリオ" Margin="5" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Target Temperature : " FontSize="20" FontFamily="メイリオ" Margin="5"/>
+                <Slider Value="{Binding TargetTemperature.Value}" Width="100" VerticalAlignment="Center" Minimum="{Binding MinTargetTemperature}" Maximum="{Binding MaxTargetTemperature}"/>
+                <Button Content="Up" Command="{Binding UpCommand}" Width="80" FontSize="20" FontFamily="メイリオ" Margin="5"/>
+                <Button Content="Down" Command="{Binding DownCommand}" Width="80" FontSize="20" FontFamily="メイリオ" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Message : " FontSize="20" FontFamily="メイリオ" Margin="5"/>
+                <TextBlock Text="{Binding Message.Value}" FontSize="20" FontFamily="メイリオ" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <ListBox ItemsSource="{Binding MessageLog}" Margin="5"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     FontFamily="メイリオ" FontSize="15"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <StatusBar>
+                <StatusBarItem Content="状態:" FontFamily="メイリオ" FontSize="15"/>
+                <StatusBarItem Content="{Binding Status.Value}" FontFamily="メイリオ" FontSize="15"/>
+                <Separator/>
+                <StatusBarItem Content="目標温度:" FontFamily="メイリオ" FontSize="15"/>
+                <StatusBarItem Content="{Binding TargetTemp.Value}" FontFamily="メイリオ" FontSize="15"/>
+                <Separator/>
+                <StatusBarItem Content="温度:" FontFamily="メイリオ" FontSize="15"/>
+                <StatusBarItem Content="{Binding Temperature.Value}" FontFamily="メイリオ" FontSize="15"/>
+                <Separator/>
+                <StatusBarItem Content="湿度:" FontFamily="メイリオ" FontSize="15"/>
+                <StatusBarItem Content="{Binding Humidity.Value}" FontFamily="メイリオ" FontSize="15"/>
+            </StatusBar>
+        </Grid>
+    </Grid>
+</Window>
