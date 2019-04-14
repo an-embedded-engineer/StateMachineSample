@@ -26,13 +26,10 @@ namespace StateMachineSample.Lib
 
         public State PreviousState { get; private set; }
 
-        public Trigger Trigger { get; private set; }
-
         protected abstract State GetInitialState();
 
         public StateMachine()
         {
-
         }
 
         public void SendTrigger(Trigger trigger)
