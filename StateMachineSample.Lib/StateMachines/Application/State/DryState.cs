@@ -12,7 +12,7 @@ namespace StateMachineSample.Lib
 
         private DryState() : base("Dry")
         {
-            this.OnEnter += this.EnterEventHandler;
+            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
             this.OnExit += this.ExitEventHandler;
         }
@@ -26,7 +26,7 @@ namespace StateMachineSample.Lib
             };
         }
 
-        private void EnterEventHandler(StateMachine context)
+        private void EntryEventHandler(StateMachine context)
         {
 
         }

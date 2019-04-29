@@ -57,7 +57,7 @@ namespace StateMachineSample.Lib
 
                 effect?.Execute(this);
 
-                this.CurrentState?.ExecuteEnterAction(this);
+                this.CurrentState?.ExecuteEntryAction(this);
             }
         }
 

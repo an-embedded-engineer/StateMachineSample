@@ -12,7 +12,7 @@ namespace StateMachineSample.Lib
 
         private StainLevelAnalysisState() : base("Stain Level AnalysisState")
         {
-            this.OnEnter += this.EnterEventHandler;
+            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
             this.OnExit += this.ExitEventHandler;
         }
@@ -25,7 +25,7 @@ namespace StateMachineSample.Lib
             };
         }
 
-        private void EnterEventHandler(StateMachine context)
+        private void EntryEventHandler(StateMachine context)
         {
 
         }

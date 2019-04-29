@@ -14,7 +14,7 @@ namespace StateMachineSample.Lib
 
         private RunningState() : base("Running")
         {
-            this.OnEnter += this.EnterEventHandler;
+            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
             this.OnExit += this.ExitEventHandler;
         }
@@ -31,7 +31,7 @@ namespace StateMachineSample.Lib
             };
         }
 
-        private void EnterEventHandler(StateMachine context)
+        private void EntryEventHandler(StateMachine context)
         {
             if (this.SubContext == null)
             {

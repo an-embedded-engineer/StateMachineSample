@@ -12,7 +12,7 @@ namespace StateMachineSample.Lib
     {
         public string Name { get; }
 
-        protected StateEventHandler OnEnter;
+        protected StateEventHandler OnEntry;
         protected StateEventHandler OnDo;
         protected StateEventHandler OnExit;
 
@@ -27,11 +27,11 @@ namespace StateMachineSample.Lib
             this.TriggerActionMap = this.GenerateTriggerActionMap();
         }
 
-        public void ExecuteEnterAction(StateMachine context)
+        public void ExecuteEntryAction(StateMachine context)
         {
-            Messenger.Send($"Enter : {this.Name}");
+            Messenger.Send($"Entry : {this.Name}");
 
-            this.OnEnter?.Invoke(context);
+            this.OnEntry?.Invoke(context);
         }
 
         public void ExecuteDoAction(StateMachine context)

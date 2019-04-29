@@ -14,7 +14,7 @@ namespace StateMachineSample.Lib
 
         private CleanState() : base("Clean")
         {
-            this.OnEnter += this.EnterEventHandler;
+            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
             this.OnExit += this.ExitEventHandler;
         }
@@ -28,7 +28,7 @@ namespace StateMachineSample.Lib
             };
         }
 
-        private void EnterEventHandler(StateMachine context)
+        private void EntryEventHandler(StateMachine context)
         {
             if (context is ModelStateMachine parent)
             {
