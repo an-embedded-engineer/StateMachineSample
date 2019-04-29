@@ -92,10 +92,15 @@ namespace StateMachineSample.Lib
             this.CleanCount = 0;
         }
 
+        public void Start()
+        {
+            this.Temperature = 30;
+
+            this.Humidity = 50;
+        }
+
         public void Stop()
         {
-            this.Humidity = 50;
-
             this.StainLevel = StainLevel.Unknown;
 
             this.PrevStainLevel = StainLevel.Unknown;
