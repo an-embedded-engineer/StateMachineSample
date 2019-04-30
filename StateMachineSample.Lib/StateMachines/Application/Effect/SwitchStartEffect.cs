@@ -16,12 +16,11 @@ namespace StateMachineSample.Lib
 
         protected override void ExecuteAction(StateMachine context)
         {
-            if (context is ModelStateMachine stm)
-            {
-                var model = stm.Model;
+            var stm = context.GetAs<ModelStateMachine>();
 
-                model.Start();
-            }
+            var model = stm.Model;
+
+            model.Start();
         }
     }
 }
