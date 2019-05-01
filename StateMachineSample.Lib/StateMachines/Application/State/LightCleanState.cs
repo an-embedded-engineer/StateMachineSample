@@ -12,22 +12,14 @@ namespace StateMachineSample.Lib
 
         private LightCleanState() : base("Light Clean")
         {
-            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
-            this.OnExit += this.ExitEventHandler;
         }
 
         protected override TriggerActionMap GenerateTriggerActionMap()
         {
             return new TriggerActionMap()
             {
-
             };
-        }
-
-        private void EntryEventHandler(StateMachine context)
-        {
-
         }
 
         private void DoEventHandler(StateMachine context)
@@ -44,11 +36,6 @@ namespace StateMachineSample.Lib
 
                 parent.SendTrigger(CleanEndTrigger.Instance);
             }
-        }
-
-        private void ExitEventHandler(StateMachine context)
-        {
-
         }
     }
 }

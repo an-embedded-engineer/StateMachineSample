@@ -12,9 +12,7 @@ namespace StateMachineSample.Lib
 
         private HeatState() : base("Heat")
         {
-            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
-            this.OnExit += this.ExitEventHandler;
         }
 
         protected override TriggerActionMap GenerateTriggerActionMap()
@@ -26,11 +24,6 @@ namespace StateMachineSample.Lib
             };
         }
 
-        private void EntryEventHandler(StateMachine context)
-        {
-
-        }
-
         private void DoEventHandler(StateMachine context)
         {
             var stm = context.GetAs<RunningStateMachine>();
@@ -38,11 +31,6 @@ namespace StateMachineSample.Lib
             var model = stm.Model;
 
             model.HeatControl();
-        }
-
-        private void ExitEventHandler(StateMachine context)
-        {
-
         }
 
         private void SwitchCoolTriggerHandler(TriggerActionArgs args)

@@ -12,22 +12,14 @@ namespace StateMachineSample.Lib
 
         private StainLevelAnalysisState() : base("Stain Level AnalysisState")
         {
-            this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
-            this.OnExit += this.ExitEventHandler;
         }
 
         protected override TriggerActionMap GenerateTriggerActionMap()
         {
             return new TriggerActionMap()
             {
-
             };
-        }
-
-        private void EntryEventHandler(StateMachine context)
-        {
-
         }
 
         private void DoEventHandler(StateMachine context)
@@ -53,11 +45,6 @@ namespace StateMachineSample.Lib
                     /* Nothing to do */
                     break;
             }
-        }
-
-        private void ExitEventHandler(StateMachine context)
-        {
-
         }
     }
 }

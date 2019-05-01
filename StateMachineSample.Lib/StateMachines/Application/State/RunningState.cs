@@ -16,7 +16,6 @@ namespace StateMachineSample.Lib
         {
             this.OnEntry += this.EntryEventHandler;
             this.OnDo += this.DoEventHandler;
-            this.OnExit += this.ExitEventHandler;
         }
 
         protected override TriggerActionMap GenerateTriggerActionMap()
@@ -44,11 +43,6 @@ namespace StateMachineSample.Lib
         private void DoEventHandler(StateMachine context)
         {
             this.SubContext.Update();
-        }
-
-        private void ExitEventHandler(StateMachine context)
-        {
-
         }
 
         private void SwitchStopTriggerHandler(TriggerActionArgs args)

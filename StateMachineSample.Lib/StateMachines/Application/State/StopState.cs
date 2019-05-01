@@ -12,9 +12,6 @@ namespace StateMachineSample.Lib
 
         private StopState() : base("Stop")
         {
-            this.OnEntry += this.EntryEventHandler;
-            this.OnDo += this.DoEventHandler;
-            this.OnExit += this.ExitEventHandler;
         }
 
         protected override TriggerActionMap GenerateTriggerActionMap()
@@ -23,21 +20,6 @@ namespace StateMachineSample.Lib
             {
                 { SwitchStartTrigger.Instance.Name, this.SwitchStartTriggerHandler },
             };
-        }
-
-        private void EntryEventHandler(StateMachine context)
-        {
-
-        }
-
-        private void DoEventHandler(StateMachine context)
-        {
-
-        }
-
-        private void ExitEventHandler(StateMachine context)
-        {
-
         }
 
         private void SwitchStartTriggerHandler(TriggerActionArgs args)
