@@ -30,10 +30,9 @@ namespace StateMachineSample.Lib
 
         private void EntryEventHandler(StateMachine context)
         {
-            if (context is ModelStateMachine parent)
-            {
-                this.SubContext = new CleanStateMachine(parent);
-            }
+            var parent = context.GetAs<ModelStateMachine>();
+
+            this.SubContext = new CleanStateMachine(parent);
         }
 
         private void DoEventHandler(StateMachine context)
