@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Common\NotificationObject.cs" />
     <Compile Include="Model\StainLevel.cs" />
+    <Compile Include="StateMachines\Application\State\CleanFinalState.cs" />
     <Compile Include="StateMachines\Application\State\CleanState.cs" />
     <Compile Include="StateMachines\Application\StateMachine\CleanStateMachine.cs" />
     <Compile Include="StateMachines\Application\State\CoolState.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="StateMachines\Application\Effect\CleanEndEffect.cs" />
     <Compile Include="StateMachines\Application\State\DeepCleanState.cs" />
     <Compile Include="StateMachines\Application\State\DryState.cs" />
-    <Compile Include="StateMachines\Application\Trigger\CleanEndTrigger.cs" />
     <Compile Include="StateMachines\Application\Trigger\InitializedTrigger.cs" />
     <Compile Include="StateMachines\Application\State\LightCleanState.cs" />
     <Compile Include="StateMachines\Application\StateMachine\ModelStateMachine.cs" />

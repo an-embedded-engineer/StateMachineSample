@@ -23,7 +23,6 @@ namespace StateMachineSample.Lib
             return new TriggerActionMap()
             {
                 { SwitchStopTrigger.Instance.Name, this.SwitchStopTriggerHandler },
-                { CleanEndTrigger.Instance.Name, this.CleanEndTriggerHandler },
             };
         }
 
@@ -37,6 +36,13 @@ namespace StateMachineSample.Lib
         private void DoEventHandler(StateMachine context)
         {
             this.SubContext.Update();
+
+            if (this.SubContext.CurrentState is CleanFinalState)
+            {
+                var effect = CleanEndEffect.Instance;
+
+                context.ChangeState(RunningState.Instance, effect);
+            }
         }
 
         private void SwitchStopTriggerHandler(TriggerActionArgs args)
@@ -46,15 +52,6 @@ namespace StateMachineSample.Lib
             var effect = args.Trigger.Effect;
 
             context.ChangeState(StopState.Instance, effect);
-        }
-
-        private void CleanEndTriggerHandler(TriggerActionArgs args)
-        {
-            var context = args.Context;
-
-            var effect = args.Trigger.Effect;
-
-            context.ChangeState(RunningState.Instance, effect);
         }
     }
 }

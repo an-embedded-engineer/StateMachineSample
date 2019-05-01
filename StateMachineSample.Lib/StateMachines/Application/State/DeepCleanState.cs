@@ -32,9 +32,7 @@ namespace StateMachineSample.Lib
 
             if (result == true)
             {
-                var parent = stm.Parent;
-
-                parent.SendTrigger(CleanEndTrigger.Instance);
+                stm.ChangeState(CleanFinalState.Instance);
             }
         }
     }
