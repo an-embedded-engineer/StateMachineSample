@@ -66,9 +66,10 @@ namespace StateMachineSample.WPF.ViewModels
 
         public MainWindowViewModel()
         {
-            this.Message = new ReactiveProperty<string>();
+            this.MaxTargetTemperature = AirConditioner.MaxTargetTemperature;
 
-            this.MessageLog = this.Message.ToReadOnlyReactiveCollection();
+            this.MinTargetTemperature = AirConditioner.MinTargetTemperature;
+
 
             this.Status = new ReactiveProperty<string>("");
 
@@ -77,6 +78,11 @@ namespace StateMachineSample.WPF.ViewModels
             this.Temperature = new ReactiveProperty<string>("");
 
             this.Humidity = new ReactiveProperty<string>("");
+
+
+            this.Message = new ReactiveProperty<string>();
+
+            this.MessageLog = this.Message.ToReadOnlyReactiveCollection();
 
             StmMessenger.OnMessageReceived += (message) =>
             {
@@ -87,13 +93,11 @@ namespace StateMachineSample.WPF.ViewModels
 
             this.StateMachine = new ModelStateMachine(this.Model);
 
+
             this.CurrentState = this.StateMachine.ObserveProperty(stm => stm.CurrentState).ToReactiveProperty();
 
-            this.MaxTargetTemperature = AirConditioner.MaxTargetTemperature;
-
-            this.MinTargetTemperature = AirConditioner.MinTargetTemperature;
-
             this.TargetTemperature = this.Model.ToReactivePropertyAsSynchronized(model => model.TargetTemperature);
+
 
             this.StopCommand = this.CurrentState.Select(s => s is RunningState || s is CleanState).ToReactiveCommand();
 
