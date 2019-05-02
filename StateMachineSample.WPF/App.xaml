@@ -4,24 +4,6 @@
              StartupUri="Views\MainWindow.xaml"
              Startup="Application_Startup">
     <Application.Resources>
-        <Style TargetType="Button">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="メイリオ"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="メイリオ"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style TargetType="ListBox">
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontFamily" Value="メイリオ"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style TargetType="StatusBarItem">
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontFamily" Value="メイリオ"/>
-        </Style>
+         
     </Application.Resources>
 </Application>
